@@ -1,0 +1,16 @@
+body {
+    display: block;
+}
+
+#canvas {
+    background-color: turquoise;
+    border: 1px solid black;
+}
+
+button {
+    font-size: 20px;
+}
+
+.pattern {
+    display: block;
+}
