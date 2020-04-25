@@ -16,72 +16,76 @@ window.onload = () => {
 
 	const canvas = element;
 	const ctx = canvas.getContext('2d');
-	let x = (canvas.width / 2) - 50;
-	let y = 0;
-	let pointing = "down";
+
+	let movingArrow = {
+		x: (canvas.width / 2) - 50,
+		y: 0,
+		pointing: "down"
+	}
+
 	const theArrow = canvas.getContext('2d');
 
 	image = new Image();
 	image.src = arrow;
 
 	image.onload = function () {
-		theArrow.drawImage(image, x, y, 100, 100);
+		theArrow.drawImage(image, movingArrow.x, movingArrow.y, 100, 100);
 	}
 
 	const directions = move => {
 		switch (move) {
 			case 'forward': {
-				if (y < element.height) {
-					switch (pointing) {
+				if (movingArrow.y < element.height) {
+					switch (movingArrow.pointing) {
 						case "down": {
-							y += 100;
+							movingArrow.y += 100;
 							break;
 						};
 						case "top": {
-							y -= 100;
+							movingArrow.y -= 100;
 							break;
 						};
 						case "left": {
-							x -= 100;
+							movingArrow.x -= 100;
 							break;
 						};
 						default: {
-							x += 100;
+							movingArrow.x += 100;
 						}
 					}
-					console.log("x: ", x, "y: ", y);
-					theArrow.drawImage(image, x, y, 100, 100);
+					console.log("x: ", movingArrow.x, "y: ", movingArrow.y);
+					theArrow.drawImage(image, movingArrow.x, movingArrow.y, 100, 100);
 				};
 				break;
 			};
 			case 'rotate': {
-				switch (pointing) {
+				switch (movingArrow.pointing) {
 					case "down": {
-						pointing = "left";
+						movingArrow.pointing = "left";
 						break;
 					};
 					case "left": {
-						pointing = "top";
+						movingArrow.pointing = "top";
 						break;
 					};
 					case "top": {
-						pointing = "right";
+						movingArrow.pointing = "right";
 						break;
 					};
 					default: {
-						pointing = "down";
+						movingArrow.pointing = "down";
 						break;
 					}
 				}
-				console.log(pointing);
+				console.log(movingArrow.pointing);
 				ctx.save();
-				theArrow.translate(x + 50, y + 50);
+				theArrow.translate(movingArrow.x + 50, movingArrow.y + 50);
 				theArrow.rotate(90 * Math.PI / 180);
-				theArrow.translate(-(x + 50), -(y + 50));
 				theArrow.save();
-				theArrow.drawImage(image, x, y, 100, 100);
-				theArrow.restore();
+				theArrow.translate(-(movingArrow.x + 50), -(movingArrow.y + 50));
 				ctx.restore();
+				theArrow.restore();
+				theArrow.drawImage(image, movingArrow.x, movingArrow.y, 100, 100);
 				break;
 			}
 		}
@@ -98,11 +102,11 @@ window.onload = () => {
 				clearInterval(intervalId);
 				movements.length = 0;
 			} else {
-				theArrow.clearRect(0, 0, 500, 500)
+				ctx.clearRect(0, 0, 500, 500)
 				directions(moves[i]);
 			}
 			i++;
-		}, 1000);
+		}, 200);
 	}
 
 	moveForward.addEventListener('click', () => { addMovement('forward') });
