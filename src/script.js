@@ -23,13 +23,11 @@ window.onload = () => {
 		pointing: "down"
 	}
 
-	const theArrow = canvas.getContext('2d');
-
 	image = new Image();
 	image.src = arrow;
 
 	image.onload = function () {
-		theArrow.drawImage(image, movingArrow.x, movingArrow.y, 100, 100);
+		ctx.drawImage(image, movingArrow.x, movingArrow.y, 100, 100);
 	}
 
 	const directions = move => {
@@ -53,8 +51,10 @@ window.onload = () => {
 							movingArrow.x += 100;
 						}
 					}
-					console.log("x: ", movingArrow.x, "y: ", movingArrow.y);
-					theArrow.drawImage(image, movingArrow.x, movingArrow.y, 100, 100);
+					ctx.translate(movingArrow.x + 50, movingArrow.y + 50);
+					ctx.rotate(movingArrow.pointing === 'left' ? 90 * Math.PI / 180 : movingArrow.pointing === 'top' ? 180 * Math.PI / 180 : movingArrow.pointing === 'right' ? 270 * Math.PI / 180 : '');
+					ctx.translate(-(movingArrow.x + 50), -(movingArrow.y + 50));
+					ctx.drawImage(image, movingArrow.x, movingArrow.y, 100, 100);
 				};
 				break;
 			};
@@ -77,15 +77,10 @@ window.onload = () => {
 						break;
 					}
 				}
-				console.log(movingArrow.pointing);
-				ctx.save();
-				theArrow.translate(movingArrow.x + 50, movingArrow.y + 50);
-				theArrow.rotate(90 * Math.PI / 180);
-				theArrow.save();
-				theArrow.translate(-(movingArrow.x + 50), -(movingArrow.y + 50));
-				ctx.restore();
-				theArrow.restore();
-				theArrow.drawImage(image, movingArrow.x, movingArrow.y, 100, 100);
+				ctx.translate(movingArrow.x + 50, movingArrow.y + 50);
+				ctx.rotate(movingArrow.pointing === 'left' ? 90 * Math.PI / 180 : movingArrow.pointing === 'top' ? 180 * Math.PI / 180 : movingArrow.pointing === 'right' ? 270 * Math.PI / 180 : '');
+				ctx.translate(-(movingArrow.x + 50), -(movingArrow.y + 50));
+				ctx.drawImage(image, movingArrow.x, movingArrow.y, 100, 100);
 				break;
 			}
 		}
@@ -102,8 +97,10 @@ window.onload = () => {
 				clearInterval(intervalId);
 				movements.length = 0;
 			} else {
-				ctx.clearRect(0, 0, 500, 500)
+				ctx.clearRect(0, 0, 500, 500);
+				ctx.save();
 				directions(moves[i]);
+				ctx.restore();
 			}
 			i++;
 		}, 200);
