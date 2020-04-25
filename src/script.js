@@ -92,7 +92,7 @@ window.onload = () => {
 				clearInterval(intervalId);
 				movements.length = 0;
 			} else {
-				ctx.clearRect(0, 0, 500, 500);
+				ctx.clearRect(0, 0, element.width, element.height);
 				ctx.save();
 				directions(moves[i]);
 				ctx.restore();
