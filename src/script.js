@@ -17,7 +17,7 @@ window.onload = () => {
 	const canvas = element;
 	const ctx = canvas.getContext('2d');
 
-	let movingArrow = {
+	const movingArrow = {
 		x: (canvas.width / 2) - 50,
 		y: 0,
 		pointing: "down",
