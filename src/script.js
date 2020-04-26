@@ -35,19 +35,19 @@ window.onload = () => {
 		if (move === 'forward') {
 			switch (movingArrow.pointing) {
 				case "down": {
-					movingArrow.y += 100;
+					movingArrow.y + 200 <= element.height ? movingArrow.y += 100 : movingArrow.y;
 					break;
 				};
 				case "top": {
-					movingArrow.y -= 100;
+					movingArrow.y > 0 ? movingArrow.y -= 100 : movingArrow.y;
 					break;
 				};
 				case "left": {
-					movingArrow.x -= 100;
+					movingArrow.x > 0 ? movingArrow.x -= 100 : movingArrow.x;
 					break;
 				};
 				default: {
-					movingArrow.x += 100;
+					movingArrow.x + 200 <= element.width ? movingArrow.x += 100 : movingArrow.x;
 				}
 			}
 		} else if (move === 'rotate') {
