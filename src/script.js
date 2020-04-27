@@ -1,5 +1,6 @@
 window.onload = () => {
 	const arrow = "./arrow.png";
+	const missionControl = document.getElementsByClassName('missionControl')[0];
 	const moveForward = document.getElementsByClassName('moveForward')[0];
 	const rotate = document.getElementsByClassName('rotate')[0];
 	const executeCommands = document.getElementsByClassName('execute')[0];
@@ -12,7 +13,7 @@ window.onload = () => {
 	element.height = 500;
 	element.tabIndex = '1';
 
-	document.body.insertBefore(element, moveForward);
+	document.body.insertBefore(element, missionControl);
 
 	const canvas = element;
 	const ctx = canvas.getContext('2d');
