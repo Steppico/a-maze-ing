@@ -1,5 +1,11 @@
 body {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Press Start 2P', cursive;
+}
+h1 {
+    margin: 20px 0px 50px 0px;
 }
 
 #canvas {
@@ -13,4 +19,5 @@ button {
 
 .pattern {
     display: block;
+    font-size: 12px;
 }
