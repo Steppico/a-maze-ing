@@ -7,13 +7,14 @@ body {
     flex-direction: column;
     align-items: center;
     font-family: 'Press Start 2P', cursive;
+    background-color: #afafaf;
 }
 h1 {
     margin: 20px 0px 50px 0px;
 }
 
 #canvas {
-    background-color: turquoise;
+    background-color: #fafafa;
     border: 1px solid black;
 }
 
