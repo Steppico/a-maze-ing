@@ -31,23 +31,31 @@ window.onload = () => {
 		ctx.drawImage(image, movingArrow.x, movingArrow.y, 100, 100);
 	}
 
+	function shakeIt(element, input) {
+		if (input === 'add') {
+			element.classList.add('shakeit');
+		} else {
+			element.classList.remove('shakeit');
+		}
+	}
+
 	const directions = move => {
 		if (move === 'forward') {
 			switch (movingArrow.pointing) {
 				case "down": {
-					movingArrow.y + 200 <= element.height ? movingArrow.y += 100 : movingArrow.y;
+					movingArrow.y + 200 <= element.height ? movingArrow.y += 100 : shakeIt(canvas, 'add');
 					break;
 				};
 				case "top": {
-					movingArrow.y > 0 ? movingArrow.y -= 100 : movingArrow.y;
+					movingArrow.y > 0 ? movingArrow.y -= 100 : shakeIt(canvas, 'add');
 					break;
 				};
 				case "left": {
-					movingArrow.x > 0 ? movingArrow.x -= 100 : movingArrow.x;
+					movingArrow.x > 0 ? movingArrow.x -= 100 : shakeIt(canvas, 'add');
 					break;
 				};
 				default: {
-					movingArrow.x + 200 <= element.width ? movingArrow.x += 100 : movingArrow.x;
+					movingArrow.x + 200 <= element.width ? movingArrow.x += 100 : shakeIt(canvas, 'add');
 				}
 			}
 		} else if (move === 'rotate') {
@@ -86,8 +94,10 @@ window.onload = () => {
 	}
 
 	const executeAll = (moves) => {
+		const canvas = document.getElementById('canvas');
 		let i = 0;
 		let intervalId = setInterval(() => {
+			shakeIt(canvas, 'remove');
 			if (i > moves.length - 1) {
 				clearInterval(intervalId);
 				movements.length = 0;
