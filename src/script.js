@@ -1,5 +1,12 @@
+/*
+TODO:
+1.move MISSION CONTROL title towards the borders of the buttons.
+2.make it look pretty! I would like the pixel style border.
+*/
+
 window.onload = () => {
 	const arrow = "./arrow.png";
+	const missionControl = document.getElementsByClassName('missionControl-title')[0];
 	const moveForward = document.getElementsByClassName('moveForward')[0];
 	const rotate = document.getElementsByClassName('rotate')[0];
 	const executeCommands = document.getElementsByClassName('execute')[0];
@@ -12,7 +19,7 @@ window.onload = () => {
 	element.height = 500;
 	element.tabIndex = '1';
 
-	document.body.insertBefore(element, moveForward);
+	document.body.insertBefore(element, missionControl);
 
 	const canvas = element;
 	const ctx = canvas.getContext('2d');
@@ -58,6 +65,7 @@ window.onload = () => {
 					movingArrow.x + 200 <= element.width ? movingArrow.x += 100 : shakeIt(canvas, 'add');
 				}
 			}
+
 		} else if (move === 'rotate') {
 			switch (movingArrow.pointing) {
 				case "down": {
@@ -108,7 +116,7 @@ window.onload = () => {
 				ctx.restore();
 			}
 			i++;
-		}, 200);
+		}, 400);
 	}
 
 	moveForward.addEventListener('click', () => { addMovement('forward') });

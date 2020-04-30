@@ -1,3 +1,7 @@
+html {
+    background-color: #fafafa;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -15,6 +19,25 @@ h1 {
 
 button {
     font-size: 20px;
+}
+
+.missionControl-title {
+    margin: 0px;
+    top: 52px;
+}
+
+.missionControl {
+    border: 5px solid black;
+    margin: 40px 0px;
+    padding: 20px;
+}
+
+
+h3 {
+    background-color: #ffffff;
+    position: relative;
+    padding: 0px 0px 0px 4px;
+    top: -52px;
 }
 
 .pattern {
