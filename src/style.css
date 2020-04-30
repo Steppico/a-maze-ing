@@ -7,10 +7,22 @@ body {
     flex-direction: column;
     align-items: center;
     font-family: 'Press Start 2P', cursive;
-    background-color: #afafaf;
+    background: linear-gradient(124deg, #e92001, #e81d1d, #f0bb0c, #e2e61d, #19c536, #1bcbd4, #2b1de8, #c507d6, #c002d1);
+    background-size: 1800% 1800%;
+    animation: rainbow 18s ease infinite;
 }
+
+@keyframes rainbow { 
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+
 h1 {
     margin: 20px 0px 50px 0px;
+    color: white;
+    -webkit-text-stroke: 0.5px black;
+    text-shadow: 2px 2px black;
 }
 
 #canvas {
