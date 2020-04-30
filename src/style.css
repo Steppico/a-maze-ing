@@ -1,21 +1,10 @@
-html {
-    background-color: #fafafa;
-}
-
 body {
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     font-family: 'Press Start 2P', cursive;
-    background: linear-gradient(124deg, #e92001, #e81d1d, #f0bb0c, #e2e61d, #19c536, #1bcbd4, #2b1de8, #c507d6, #c002d1);
-    background-size: 1800% 1800%;
-    animation: rainbow 18s ease infinite;
-}
-
-@keyframes rainbow { 
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
+    background-color: lightgoldenrodyellow;
 }
 
 h1 {
@@ -35,7 +24,10 @@ button {
 }
 
 .missionControl-title {
+    background-color: lightgoldenrodyellow;
     margin: 0px;
+    position: relative;
+    padding: 0px 0px 0px 4px;
     top: 52px;
 }
 
@@ -43,14 +35,6 @@ button {
     border: 5px solid black;
     margin: 40px 0px;
     padding: 20px;
-}
-
-
-h3 {
-    background-color: #ffffff;
-    position: relative;
-    padding: 0px 0px 0px 4px;
-    top: -52px;
 }
 
 .pattern {
