@@ -202,6 +202,8 @@ window.onload = () => {
 		ctx.clearRect(0, 0, element.width, element.height);
 		movingArrow.x = element.width / 2 - 50;
 		movingArrow.y = 0;
+		movingArrow.pointing = 'down';
+		movingArrow.spin = null;
 		ctx.drawImage(image, movingArrow.x, movingArrow.y, 100, 100);
 		movements.length = 0;
 	}
