@@ -1,19 +1,21 @@
-html {
-    background-color: #fafafa;
-}
-
 body {
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     font-family: 'Press Start 2P', cursive;
+    background-color: lightgoldenrodyellow;
 }
+
 h1 {
     margin: 20px 0px 50px 0px;
+    color: white;
+    -webkit-text-stroke: 0.5px black;
+    text-shadow: 2px 2px black;
 }
 
 #canvas {
-    background-color: turquoise;
+    background-color: #fafafa;
     border: 1px solid black;
 }
 
@@ -22,7 +24,10 @@ button {
 }
 
 .missionControl-title {
+    background-color: lightgoldenrodyellow;
     margin: 0px;
+    position: relative;
+    padding: 0px 0px 0px 4px;
     top: 52px;
 }
 
@@ -30,14 +35,6 @@ button {
     border: 5px solid black;
     margin: 40px 0px;
     padding: 20px;
-}
-
-
-h3 {
-    background-color: #ffffff;
-    position: relative;
-    padding: 0px 0px 0px 4px;
-    top: -52px;
 }
 
 .pattern {
