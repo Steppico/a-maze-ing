@@ -121,9 +121,6 @@ window.onload = () => {
 		}, 400);
 	}
 
-<<<<<<< HEAD
-
-
 	function draw() {
 
 		ctx.lineWidth = 5;
@@ -195,20 +192,18 @@ window.onload = () => {
 		ctx.stroke();
 	}
 
-
-	draw();
-=======
 	function resetStatus() {
 		ctx.clearRect(0, 0, element.width, element.height);
 		movingArrow.x = element.width / 2 - 50;
 		movingArrow.y = 0;
-		movingArrow.pointing = 'down';
+		movingArrow.pointing = "down";
 		movingArrow.spin = null;
 		ctx.drawImage(image, movingArrow.x, movingArrow.y, 100, 100);
 		movements.length = 0;
+		draw();
 	}
 
->>>>>>> issue 7: creating function to reset status of canvas: resets arrow's stats, movements array and clear canvas.
+	draw();
 	moveForward.addEventListener('click', () => { addMovement('forward') });
 	rotate.addEventListener('click', () => { addMovement('rotate') });
 	executeCommands.addEventListener('click', () => { executeAll(movements) })
