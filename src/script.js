@@ -12,6 +12,7 @@ window.onload = () => {
 	const executeCommands = document.getElementsByClassName('execute')[0];
 	const element = document.createElement('canvas');
 	const pattern = document.getElementsByClassName('pattern')[0];
+	const clear = document.getElementsByClassName('clear')[0];
 	const movements = [];
 
 	element.id = "canvas"
@@ -120,8 +121,6 @@ window.onload = () => {
 		}, 400);
 	}
 
-
-
 	function draw() {
 
 		ctx.lineWidth = 5;
@@ -193,9 +192,21 @@ window.onload = () => {
 		ctx.stroke();
 	}
 
+	function resetStatus() {
+		ctx.clearRect(0, 0, element.width, element.height);
+		movingArrow.x = element.width / 2 - 50;
+		movingArrow.y = 0;
+		movingArrow.pointing = "down";
+		movingArrow.spin = null;
+		ctx.drawImage(image, movingArrow.x, movingArrow.y, 100, 100);
+		movements.length = 0;
+		draw();
+		pattern.innerText = "";
+	}
 
 	draw();
 	moveForward.addEventListener('click', () => { addMovement('forward') });
 	rotate.addEventListener('click', () => { addMovement('rotate') });
 	executeCommands.addEventListener('click', () => { executeAll(movements) })
+	clear.addEventListener('click', () => { resetStatus() })
 };
