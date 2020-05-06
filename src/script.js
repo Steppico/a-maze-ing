@@ -15,6 +15,7 @@ window.onload = () => {
 	const clear = document.getElementsByClassName('clear')[0];
 	const movements = [];
 
+
 	element.id = "canvas"
 	element.width = 1100;
 	element.height = 700;
@@ -30,6 +31,10 @@ window.onload = () => {
 		y: 0,
 		pointing: "down",
 		spin: null
+	}
+
+	const canvasCoords = {
+		done: false,
 	}
 
 	image = new Image();
@@ -51,19 +56,34 @@ window.onload = () => {
 		if (move === 'forward') {
 			switch (movingArrow.pointing) {
 				case "down": {
-					movingArrow.y + 200 <= element.height ? movingArrow.y += 100 : shakeIt(canvas, 'add');
+					// movingArrow.y + 200 <= element.height ? movingArrow.y += 100 : shakeIt(canvas, 'add');
+					console.log(movingArrow.y + 100);
+					console.log(movingArrow.x);
+					// console.log(canvasCoords[`${movingArrow.x} ${movingArrow.y + 200}`]);
+					canvasCoords[`${movingArrow.x} ${movingArrow.y + 100}`] ? shakeIt(canvas, 'add') : movingArrow.y += 100;
 					break;
 				};
 				case "top": {
-					movingArrow.y > 0 ? movingArrow.y -= 100 : shakeIt(canvas, 'add');
+					console.log(movingArrow.y);
+					console.log(movingArrow.x);
+					canvasCoords[`${movingArrow.x} ${movingArrow.y}`] ? shakeIt(canvas, 'add') : movingArrow.y -= 100;
+					// movingArrow.y > 0 ? movingArrow.y -= 100 : shakeIt(canvas, 'add');
 					break;
 				};
 				case "left": {
-					movingArrow.x > 0 ? movingArrow.x -= 100 : shakeIt(canvas, 'add');
+					console.log(movingArrow.y);
+					console.log(movingArrow.x);
+					console.log(canvasCoords[`${movingArrow.x} ${movingArrow.y}`]);
+					// movingArrow.x > 0 ? movingArrow.x -= 100 : shakeIt(canvas, 'add');
+					canvasCoords[`${movingArrow.x} ${movingArrow.y}`] ? shakeIt(canvas, 'add') : movingArrow.x -= 100;
 					break;
 				};
 				default: {
-					movingArrow.x + 200 <= element.width ? movingArrow.x += 100 : shakeIt(canvas, 'add');
+					console.log(movingArrow.y);
+					console.log(movingArrow.x + 100);
+					console.log(canvasCoords[`${movingArrow.x + 100} ${movingArrow.y}`]);
+					// movingArrow.x + 200 <= element.width ? movingArrow.x += 100 : shakeIt(canvas, 'add');
+					canvasCoords[`${movingArrow.x + 100} ${movingArrow.y}`] ? shakeIt(canvas, 'add') : movingArrow.x += 100;
 				}
 			}
 
@@ -110,6 +130,7 @@ window.onload = () => {
 			if (i > moves.length - 1) {
 				clearInterval(intervalId);
 				movements.length = 0;
+				console.log(canvasCoords);
 			} else {
 				ctx.clearRect(0, 0, element.width, element.height);
 				draw();
@@ -121,14 +142,49 @@ window.onload = () => {
 		}, 400);
 	}
 
-	function draw() {
+	function addCanvasCoords(begin, end) {
+		console.log(begin, end);
+		if (begin[0] === end[0]) { // this means we are moving on Y axis
+			if (begin[1] > end[1]) {
+				console.log("Y Axis, bottom to top");
+				for (let i = end[1]; i <= begin[1]; i = i + 100) {
+					canvasCoords[`${begin[0]} ${i}`] = [begin[0], i];
+				}
+			} else {
+				console.log("Y axis, top to bottom");
+				for (let i = begin[1]; i <= end[1]; i = i + 100) {
+					canvasCoords[`${begin[0]} ${i}`] = [begin[0], i];
+				}
+			}
+		} else if (begin[1] === end[1]) { // this means we are moving on X axis
+			if (begin[0] > end[0]) {
+				console.log("X Axis, rtl");
+				for (let j = end[0]; j <= begin[0]; j = j + 100) {
+					canvasCoords[`${j} ${end[1]}`] = [j, end[1]];
+				}
+			} else {
+				console.log("X Axis, ltr")
+				for (let j = begin[0]; j <= end[0]; j = j + 100) {
+					canvasCoords[`${j} ${end[1]}`] = [j, end[1]];
+				}
+			}
+		}
+	}
 
+	function draw() {
+		// PoC with canvas borders
+		addCanvasCoords([0, 0], [element.width, 0]);
+		addCanvasCoords([element.width, 0], [element.width, element.height]);
+		addCanvasCoords([element.width, element.height], [0, element.height]);
+		addCanvasCoords([0, element.height], [0, 0]);
+		console.log(canvasCoords);
 		ctx.lineWidth = 5;
 		ctx.beginPath();
 
 		// top (entrance from 500 to 600)
 		ctx.moveTo(100, 100);
 		ctx.lineTo(500, 100);
+		// canvasCoords.done ? "" : addCanvasCoords([100, 100], [500, 100]);
 		ctx.moveTo(600, 100);
 		ctx.lineTo(1000, 100);
 
