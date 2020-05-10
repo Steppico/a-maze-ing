@@ -23,6 +23,15 @@ button {
     font-size: 20px;
 }
 
+.start-button {
+    position: relative;
+    top: 65px;
+}
+
+.hide {
+    display: none;
+}
+
 .missionControl-title {
     background-color: lightgoldenrodyellow;
     margin: 0px;

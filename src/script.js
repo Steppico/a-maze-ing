@@ -6,7 +6,9 @@ TODO:
 
 window.onload = () => {
 	const arrow = "./arrow.png";
-	const missionControl = document.getElementsByClassName('missionControl-title')[0];
+	const startButton = document.getElementsByClassName('start-button')[0];
+	const missionControlTitle = document.getElementsByClassName('missionControl-title')[0];
+	const missionControl = document.getElementsByClassName('missionControl')[0];
 	const moveForward = document.getElementsByClassName('moveForward')[0];
 	const rotate = document.getElementsByClassName('rotate')[0];
 	const executeCommands = document.getElementsByClassName('execute')[0];
@@ -21,7 +23,7 @@ window.onload = () => {
 	element.height = 700;
 	element.tabIndex = '1';
 
-	document.body.insertBefore(element, missionControl);
+	document.body.insertBefore(element, startButton);
 
 	const canvas = element;
 	const ctx = canvas.getContext('2d');
@@ -282,9 +284,16 @@ window.onload = () => {
 		pattern.innerText = "";
 	}
 
+	function playerReady() {
+		startButton.classList.add('hide');
+		missionControlTitle.classList.remove('hide');
+		missionControl.classList.remove('hide');
+	}
+
 	draw();
+	startButton.addEventListener('click', () => { playerReady() })
 	moveForward.addEventListener('click', () => { addMovement('forward') });
 	rotate.addEventListener('click', () => { addMovement('rotate') });
-	executeCommands.addEventListener('click', () => { executeAll(movements) })
-	clear.addEventListener('click', () => { resetStatus() })
+	executeCommands.addEventListener('click', () => { executeAll(movements) });
+	clear.addEventListener('click', () => { resetStatus() });
 };
