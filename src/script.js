@@ -1,9 +1,3 @@
-/*
-TODO:
-1.move MISSION CONTROL title towards the borders of the buttons.
-2.make it look pretty! I would like the pixel style border.
-*/
-
 window.onload = () => {
 	const arrow = "./images/arrow.png";
 	const startButton = document.getElementsByClassName('start-button')[0];
@@ -42,9 +36,8 @@ window.onload = () => {
 		done: false,
 	};
 
-	image = new Image();
+	const image = new Image();
 	image.src = arrow;
-
 	image.onload = function () {
 		ctx.drawImage(image, movingArrow.x, movingArrow.y, 100, 100);
 	}
