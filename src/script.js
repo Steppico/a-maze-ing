@@ -5,7 +5,7 @@ TODO:
 */
 
 window.onload = () => {
-	const arrow = "./arrow.png";
+	const arrow = "./images/arrow.png";
 	const missionControl = document.getElementsByClassName('missionControl-title')[0];
 	const moveForward = document.getElementsByClassName('moveForward')[0];
 	const rotate = document.getElementsByClassName('rotate')[0];
