@@ -4,7 +4,7 @@
   "description": "a maze like experience",
   "main": "index.js",
   "repository": "https://github.com/Steppico/a-maze-ing.git",
-  "author": "Stefano Demichelis <sdemichelis@ciandt.com>",
+  "author": "Stefano Demichelis <steppashr@gmail.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
