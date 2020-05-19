@@ -2,7 +2,7 @@ window.onload = () => {
 	const arrow = "./images/arrow.png";
 	const startButton = document.getElementsByClassName('start-button')[0];
 	const missionControlTitle = document.getElementsByClassName('missionControl-title')[0];
-	const missionControl = document.getElementsByClassName('missionControl-title')[0];
+	const missionControl = document.getElementsByClassName('missionControl')[0];
 	const moveForward = document.getElementsByClassName('moveForward')[0];
 	const rotate = document.getElementsByClassName('rotate')[0];
 	const executeCommands = document.getElementsByClassName('execute')[0];
