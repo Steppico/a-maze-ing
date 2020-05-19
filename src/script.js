@@ -249,7 +249,7 @@ window.onload = () => {
 		canvasCoords.done === false ? addCanvasCoords([300, 200], [300, 300]) : "";
 		ctx.moveTo(400, 297.5);
 		ctx.lineTo(400, 600);
-		canvasCoords.done === false ? addCanvasCoords([400, 300], [300, 600]) : "";
+		canvasCoords.done === false ? addCanvasCoords([400, 300], [400, 600]) : "";
 		ctx.moveTo(500, 397.5);
 		ctx.lineTo(500, 502.5);
 		canvasCoords.done === false ? addCanvasCoords([500, 400], [500, 500]) : "";
