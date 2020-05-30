@@ -6,18 +6,31 @@ window.onload = () => {
 	const moveForward = document.getElementsByClassName('moveForward')[0];
 	const rotate = document.getElementsByClassName('rotate')[0];
 	const executeCommands = document.getElementsByClassName('execute')[0];
-	const element = document.createElement('canvas');
 	const pattern = document.getElementsByClassName('pattern')[0];
 	const clear = document.getElementsByClassName('clear')[0];
 	const movements = [];
 
+	const playground = document.createElement('div');
+	const element = document.createElement('canvas');
+	const leftBox = document.createElement('div');
+	const rightBox = document.createElement('div');
 
+	playground.className = "playground";
 	element.id = "canvas"
 	element.width = 1100;
 	element.height = 700;
 	element.tabIndex = '1';
+	leftBox.className = "left-box";
+	rightBox.className = "right-box";
+	leftBox.innerHTML = "<p>Press start.<br><br><br>Move the arrow clicking<br><br>forward<br><br>or<br><br>rotate.</p><div><br>OK</div>";
+	rightBox.innerHTML = "<p>To see the arrow <br><br><br>move following your<br><br><br>logic, click the<br><br><br>check button.<div><br>OK</div>";
 
+<<<<<<< HEAD
 	document.body.insertBefore(element, startButton);
+=======
+	playground.append(leftBox, element, rightBox);
+	document.body.insertBefore(playground, missionControl);
+>>>>>>> 602690a... issue20: implementing rules around the canvas. And make it pretty.
 
 	const canvas = element;
 	const ctx = canvas.getContext('2d');
@@ -284,9 +297,10 @@ window.onload = () => {
 	}
 
 	draw();
-	startButton.addEventListener('click', () => { playerReady() })
+	leftBox.addEventListener('click', () => { leftBox.style.visibility = "hidden" });
+	rightBox.addEventListener('click', () => { rightBox.style.visibility = "hidden" })
 	moveForward.addEventListener('click', () => { addMovement('forward') });
 	rotate.addEventListener('click', () => { addMovement('rotate') });
 	executeCommands.addEventListener('click', () => { executeAll(movements) });
-	clear.addEventListener('click', () => { resetStatus() });
+	clear.addEventListener('click', () => { resetStatus() })
 };

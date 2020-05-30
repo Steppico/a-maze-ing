@@ -9,14 +9,45 @@ body {
 
 h1 {
     margin: 20px 0px 50px 0px;
-    color: white;
+    color: #fafafa;
     -webkit-text-stroke: 0.5px black;
     text-shadow: 2px 2px black;
+}
+.playground {
+    margin: 0px 105px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 18% 64% 18%;
+}
+.playground > div {
+    border: 3px solid black;
+    border-radius: 25px;
+    height: 40%;
+    background-color: #fafafa;
+    text-align: center;
+}
+
+.playground > div > div {
+    text-align: right;
+    padding: 20px;
+}
+
+.playground > div > div:hover {
+    cursor: pointer;
+}
+
+.left-box {
+    box-shadow: -10px 10px black;
+}
+
+.right-box {
+    box-shadow: 10px 10px black;
 }
 
 #canvas {
     background-color: #fafafa;
-    border: 1px solid black;
+    border: 3px solid black;
 }
 
 button {
