@@ -26,7 +26,7 @@ window.onload = () => {
 	rightBox.innerHTML = "<p>Click the</p><p>check button</p><p>to execute</p><p>your</p><p>logic.</p><div class='okay'>OK</div>";
 
 	playground.append(leftBox, element, rightBox);
-	document.body.insertBefore(playground, missionControl);
+	document.body.insertBefore(playground, missionControlTitle);
 
 	const canvas = element;
 	const ctx = canvas.getContext('2d');
